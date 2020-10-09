@@ -48,6 +48,17 @@ Resources:
         BuildSpec: buildspec.yml
       Triggers:
         Webhook: true
+        FilterGroups:
+            - - Type: EVENT
+                Pattern: PULL_REQUEST_CREATED, PULL_REQUEST_UPDATED, PULL_REQUEST_REOPENED
+              - Type: BASE_REF
+                Pattern: refs/heads/qa$
+                ExcludeMatchedPattern: false
+            - - Type: EVENT
+                Pattern: PUSH
+              - Type: HEAD_REF
+                Pattern: refs/heads/qa$
+                ExcludeMatchedPattern: false
       ServiceRole: !Ref CodeBuildRole
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
@@ -77,4 +88,5 @@ Resources:
             Service: codebuild.amazonaws.com
           Action: sts:AssumeRole
       ManagedPolicyArns:
-        - arn:aws:iam::515025432918:role/Administrator_role #TODO: Reduce permissions
+         -  arn:aws:iam::aws:policy/AdministratorAccess #TODO: Reduce permissions
+
