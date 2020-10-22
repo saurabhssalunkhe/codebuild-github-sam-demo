@@ -7,6 +7,10 @@ phases:
     commands:
 # This isn't necessary at the moment, but sometimes the build images fall behind current version of the AWS CLI
 #      - pip install --upgrade awscli
+      - sudo apt-get update
+      - sudo apt-get install curl
+      - sudo apt-get install awscli
+      - pip install --user aws-sam-cli
       - pip install --user aws-sam-cli
       - USER_BASE_PATH=$(python -m site --user-base)
       - export PATH=$PATH:$USER_BASE_PATH/bin
