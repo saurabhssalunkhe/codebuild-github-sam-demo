@@ -10,6 +10,7 @@ public class WeatherEvent {
     public WeatherEvent() {
     }
 
+	//parameter constructor
     public WeatherEvent(String locationName, Double temperature, Long timestamp, Double longitude, Double latitude) {
         this.locationName = locationName;
         this.temperature = temperature;
